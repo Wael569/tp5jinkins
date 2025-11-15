@@ -51,7 +51,7 @@ pipeline {
         stage('Scan Server Image') {
             steps {
                 script {
-                    sh """
+                    bat """
                     docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
                         aquasec/trivy:latest image --exit-code 0 \
                         --severity LOW,MEDIUM,HIGH,CRITICAL \
@@ -64,7 +64,7 @@ pipeline {
         stage('Scan Client Image') {
             steps {
                 script {
-                    sh """
+                    bat """
                     docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
                         aquasec/trivy:latest image --exit-code 0 \
                         --severity LOW,MEDIUM,HIGH,CRITICAL \
